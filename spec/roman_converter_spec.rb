@@ -1,5 +1,7 @@
 # frozen_string_literal: true
+
 require_relative '../lib/roman_converter'
+require_relative 'spec_helper'
 
 describe String do
   context '# Arabic Number' do
@@ -40,7 +42,7 @@ describe String do
       expect(Merchant.new('glob glob is Silver is 34 Credits').recon_sentence.unit_price).to eq 17.0
     end
     it '4 Gold is 57800 Credits' do
-      expect(Merchant.new('glob prok Gold is 57800 Credits').recon_sentence.unit_price).to eq 14450
+      expect(Merchant.new('glob prok Gold is 57800 Credits').recon_sentence.unit_price).to eq 14_450
     end
     it '20 Iron is 3910 Credits' do
       expect(Merchant.new('pish pish Iron is 3910 Credits').recon_sentence.unit_price).to eq 195.5

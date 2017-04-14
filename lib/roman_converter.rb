@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class String
   def to_arabic_number
     validate_roman
@@ -84,13 +85,13 @@ class Translate
   def self.translate_question(question)
     galactic_words = []
     question.split.each do |word|
-      Translate.galactic_words_to_roman_number_assigments.keys.include?(word) ? (galactic_words << word ) : (break if galactic_words.size > 0)
+      Translate.galactic_words_to_roman_number_assigments.keys.include?(word) ? (galactic_words << word) : (break unless galactic_words.empty?)
     end
-    if galactic_words.size > 0
+    unless galactic_words.empty?
       str = Translate.new(galactic_words.join(' '))
       return (str.is_valid? ? str : nil)
     end
-    return nil
+    nil
   end
 end
 
@@ -117,7 +118,7 @@ class Merchant
   end
 
   def clueless
-     'I have no idea what you are talking about'.to_s
+    'I have no idea what you are talking about'.to_s
   end
 
   def galactic_numeral_assigment(galactic_word, roman_number)
@@ -131,7 +132,7 @@ class Merchant
     @words.each do |word|
       if Translate.galactic_words_to_roman_number_assigments.keys.include?(word)
         galactic_units.push word
-      elsif %w(is Credits).include? word # Ignore these words, we don't really care of these words in Credit Statement Lines
+      elsif %w[is Credits].include? word # Ignore these words, we don't really care of these words in Credit Statement Lines
         next
       elsif word.to_i > 0 # 2 Silver is '34'
         credit_price_of_metal_coins = word.to_i # e.g 34
@@ -154,21 +155,21 @@ class Merchant
   end
 
   def process_question
-    if @line.start_with? "how many Credits is "
-      main_question_part = @line.split("how many Credits is ")[1] # how many Credits is glob prok Silver ? gets glob prok Silver ?
+    if @line.start_with? 'how many Credits is '
+      main_question_part = @line.split('how many Credits is ')[1] # how many Credits is glob prok Silver ? gets glob prok Silver ?
       galatic_words = Translate.translate_question(main_question_part) # glob prok Silver gets glob prok
       trademineral = TradeMineral.get_trade_metal(main_question_part) # glob prok Silver gets Silver
       if trademineral && galatic_words
         galactic_words_to_roman = galatic_words.pattern.split.map { |e| Translate.galactic_words_to_roman_number_assigments[e] }.join.to_s.to_arabic_number
         trademineral_price_credit = (galactic_words_to_roman * trademineral.unit_price).to_i
-        return "#{galatic_words.pattern.to_s} #{trademineral.coin_name} is #{trademineral_price_credit} Credits"
+        return "#{galatic_words.pattern} #{trademineral.coin_name} is #{trademineral_price_credit} Credits"
       end
-    elsif @line.start_with? "how much is "
-      main_question = @line.split("how much is ")[1] # how much is pish tegj glob glob ? gets pish tegj glob glob ?
+    elsif @line.start_with? 'how much is '
+      main_question = @line.split('how much is ')[1] # how much is pish tegj glob glob ? gets pish tegj glob glob ?
       galatic_words = Translate.translate_question(main_question) #  pish tegj glob glob ? gets pish tegj glob glob
       if galatic_words
         conversion_value = galatic_words.pattern.split.map { |e| Translate.galactic_words_to_roman_number_assigments[e] }.join.to_s.to_arabic_number
-        return "#{galatic_words.pattern.to_s} is #{conversion_value}"
+        return "#{galatic_words.pattern} is #{conversion_value}"
       end
     end
     clueless

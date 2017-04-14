@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.4.0
+install: "bundle install"
+script:
+  - rspec
+env:
+  global:
+    - secure: "HMOg0RWKiIGmGtorxhsrwL6p9vfo0SR9l4bLEoUXsKNOTTmBLf1vYUDRRPVx1ty8JeDNV6/rahjmyIQc0vbuNVkwK/GyQgqjHEuWRZu/Y4VdLPJTEIvHG4Bzvemo74F6x1qOX5M+WOn0RooEeH0xzuNhT5abYDP4ag6+JbsAvtjTa+ITV8CVhFHeHJCRskM+WGpJZRd9mGUzQBEvXFCcCk6re+d8me18t6+l8+0qU9D6gwjHtQlnH0U4CgdcLr1gTvv5qvpzAryRtevqjOLDb7vrxGygycebHXJBoeaEocKcNW/mrWvISNE5yxk2kjLOVoz7gjtjR6e9a9M9GnrwHWmO15418No1c9CSQAiE6c0M5Ix9x1y5qjD9TlLJOKz2nhkcdqkZs2bHjMBgZ0Y5dMH0wtzkIHfgE6CcHLbQDM+TbAWAKBcq4W051d+CH4vHfDkG07a5AbSG82qEMdnb7hE9JZtsWcz66AV/nsusbFeMFe7hySlZoV5mLb6t2lIAGJ0dd417rfynhZxbNYU9rfvsvynCV+UKmImow/dHcd7VuPvi4vtDek7QbByFAwdvTIFOiG94lZA5Pma0RrvPChcp9bmZHVSgD+63thunH0d1zG995wiFaerZrdXyHLtJt31SxlySzcBnswkxrjBGe+cVl6PRrjLKfrBHwfPKhgk=" # Codacy Token
