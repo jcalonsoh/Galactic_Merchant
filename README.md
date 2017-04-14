@@ -1,0 +1,2 @@
+# Galactic_Merchant
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/107800339e2f463388db2628a80bf7e8)](https://www.codacy.com/app/jcalonsoh/Galactic_Merchant?utm_source=github.com&utm_medium=referral&utm_content=jcalonsoh/Galactic_Merchant&utm_campaign=badger)
